@@ -3,6 +3,22 @@ import confetti from "canvas-confetti";
 import "./App.css";
 import { ArrowDownIcon } from "@heroicons/react/16/solid";
 
+const GIF_BASE = "/couple-gif";
+
+const coupleGifs = [
+  { file: "huggy.gif",              alt: "Couple hugging" },
+  { file: "shy.gif",               alt: "Couple being shy" },
+  { file: "bubu-dudu-sseeyall.gif", alt: "Bubu Dudu see ya" },
+  { file: "carryyou.gif",          alt: "Carrying you" },
+  { file: "bleh.gif",              alt: "Being silly" },
+  { file: "miss-you.gif",          alt: "Missing you" },
+  { file: "kisses.gif",            alt: "Kisses" },
+  { file: "sleep.gif",             alt: "Sleeping together" },
+  { file: "eats.gif",              alt: "Eating together" },
+  { file: "wallkiss.gif",          alt: "Wall kiss" },
+  { file: "selfie.gif",            alt: "Taking a selfie" },
+];
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [istriggered, setIsTriggered] = useState(false);
@@ -117,64 +133,22 @@ function App() {
               When you're down, or sad, I'm here for you ❤️
             </p>
             <img
-              src="public/couple-gif/huggy.gif"
-              alt="Couple Hugging GIF"
+              src={`${GIF_BASE}/${coupleGifs[0].file}`}
+              alt={coupleGifs[0].alt}
               className="w-96 h-96 object-cover rounded-lg"
             />
             <p className="text-center text-lg font-semibold text-gray-800">
               Enjoy a collage of cute couple GIFs that remind you of us! 🥰
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 pb-8">
-            <img
-              src="public/couple-gif/shy.gif"
-              alt="Couple Hugging GIF"
-              className="w-96 h-96 object-cover rounded-lg"
-            />
-            <img
-              src="/public/couple-gif/bubu-dudu-sseeyall.gif"
-              alt="Couple Hugging GIF"
-              className="w-96 h-96 object-cover rounded-lg"
-            />
-            <img
-              src="public/couple-gif/carryyou.gif"
-              alt="Couple Hugging GIF"
-              className="w-96 h-96 object-cover rounded-lg"
-            />
-            <img
-              src="public/couple-gif/bleh.gif"
-              alt="Couple Hugging GIF"
-              className="w-96 h-96 object-cover rounded-lg"
-            />
-            <img
-              src="public/couple-gif/miss-you.gif"
-              alt="Couple Hugging GIF"
-              className="w-96 h-96 object-cover rounded-lg"
-            />
-            <img
-              src="public/couple-gif/kisses.gif"
-              alt="Couple Hugging GIF"
-              className="w-96 h-96 object-cover rounded-lg"
-            />
-            <img
-              src="public/couple-gif/sleep.gif"
-              alt="Couple Hugging GIF"
-              className="w-96 h-96 object-cover rounded-lg"
-            />
-            <img
-              src="public/couple-gif/eats.gif"
-              alt="Couple Hugging GIF"
-              className="w-96 h-96 object-cover rounded-lg"
-            />
-            <img
-              src="public/couple-gif/wallkiss.gif"
-              alt="Couple Hugging GIF"
-              className="w-96 h-96 object-cover rounded-lg"
-            />
-            <img
-              src="public/couple-gif/selfie.gif"
-              alt="Couple Hugging GIF"
-              className="w-96 h-96 object-cover rounded-lg"
-            />
+              {coupleGifs.slice(1).map((gif) => (
+                <img
+                  key={gif.file}
+                  src={`${GIF_BASE}/${gif.file}`}
+                  alt={gif.alt}
+                  className="w-96 h-96 object-cover rounded-lg"
+                />
+              ))}
             </div>
           <div>
         <p className="text-center text-lg font-semibold text-gray-800 py-8">
