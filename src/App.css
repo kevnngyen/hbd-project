@@ -1,0 +1,286 @@
+.body {
+  font-family: 'Arial', sans-serif;
+  background: #f0f0f0;
+  color: #333;
+  display: flex;
+  width: 100%;
+}
+
+/* ───── layout ───── */
+.scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 2rem;
+  user-select: none;
+  width: 100%;
+}
+
+.hint {
+  font-size: 1.2rem;
+  color: #666;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+/* ───── envelope wrapper ───── */
+.envelope {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  cursor: pointer;
+  perspective: 800px;
+  transition: transform 0.5s ease;
+}
+
+.envelope.open {
+  transform: translateY(110px);
+}
+
+/* ───── envelope body (the rectangle) ───── */
+.envelope-body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #e8d5b7;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  z-index: 3;
+}
+
+/* ───── triangular flap ───── */
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-top: 140px solid #d4bc94;
+  z-index: 4;
+  transform-origin: top center;
+  transition: transform 0.6s ease;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1;               /* flap goes behind when open */
+}
+
+/* ───── note ───── */
+.note {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: fit-content;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  bottom: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease 0.15s, opacity 0.4s ease 0.15s;
+  transform: translateY(0);
+  opacity: 0;
+}
+
+.envelope.open .note {
+  transform: translateY(-180px);
+  opacity: 1;
+}
+
+.note-text {
+  font-family: 'Georgia', serif;
+  font-size: 1.35rem;
+  color: #333;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ───── spacer content ───── */
+.spacer-content {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
+}
+
+/* ───── scroll surprise section ───── */
+.scroll-surprise {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.scroll-surprise p {
+  max-width: 600px;
+  line-height: 1.6;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ───── Cake sprite dialog scene ───── */
+.cake-sprite-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  background: transparent;
+}
+
+.dialog-candle-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  max-width: 380px;
+  margin-bottom: 8px;
+  position: relative;
+  background: transparent;
+}
+
+.dialog-candle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 12px;
+  background: transparent;
+}
+
+.dialog-flame {
+  width: 6px;
+  height: 10px;
+  background: radial-gradient(ellipse at 50% 100%, #fff700 0%, #ff8c00 55%, transparent 100%);
+  border-radius: 50% 50% 30% 30%;
+  animation: flicker 0.25s ease-in-out infinite alternate;
+  transition: height 0.2s ease, opacity 0.2s ease;
+}
+
+.dialog-candle.out .dialog-flame {
+  height: 0;
+  opacity: 0;
+}
+
+@keyframes flicker {
+  from { transform: scaleX(1) scaleY(1); }
+  to   { transform: scaleX(0.75) scaleY(0.9); }
+}
+
+.dialog-candle-body {
+  width: 5px;
+  height: 18px;
+  border-radius: 1px;
+}
+
+.dialog-candle-base {
+  width: 8px;
+  height: 3px;
+  border-radius: 1px;
+  background: #d4bc94;
+}
+
+/* ───── Dialog cake wrapper ───── */
+.dialog-cake-wrap {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+}
+
+/* ───── CSS-only birthday cake ───── */
+.css-cake {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+}
+
+.cake-top-layer {
+  width: 160px;
+  height: 40px;
+  background: linear-gradient(180deg, #ffeaf1 0%, #e91e63 100%);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+}
+
+.cake-top-layer::after {
+  content: '🍓  🍓  🍓';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.cake-frosting {
+  height: 14px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.cake-frosting-1 {
+  width: 170px;
+  border-radius: 0 0 12px 12px;
+  background: linear-gradient(180deg, #ffb0b0 60%, #fce4ec 100%);
+}
+
+.cake-frosting::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background:
+    radial-gradient(circle at 10px 0, transparent 8px, #fff 8px, #fff 10px, transparent 10px),
+    radial-gradient(circle at 30px 0, transparent 8px, #fff 8px, #fff 10px, transparent 10px),
+    radial-gradient(circle at 50px 0, transparent 8px, #fff 8px, #fff 10px, transparent 10px),
+    radial-gradient(circle at 70px 0, transparent 8px, #fff 8px, #fff 10px, transparent 10px);
+  background-size: 20px 10px;
+  background-repeat: repeat-x;
+}
+
+.cake-mid-layer {
+  width: 190px;
+  height: 50px;
+  background: linear-gradient(180deg, #f7e3fb 0%, #b02757 100%);
+  border-radius: 6px 6px 0 0;
+}
+
+.cake-frosting-2 {
+  width: 200px;
+  border-radius: 0 0 12px 12px;
+  background: linear-gradient(180deg, #d9e3a0 60%, #f3e5f5 100%);
+}
+
+.cake-bottom-layer {
+  width: 220px;
+  height: 60px;
+  background: linear-gradient(180deg, #fff4e4 0%, #ff749c 100%);
+  border-radius: 6px 6px 0 0;
+}
+
+.cake-plate {
+  width: 260px;
+  height: 16px;
+  background: linear-gradient(180deg, #e0e0e0 0%, #bdbdbd 100%);
+  border-radius: 0 0 50% 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+
+
