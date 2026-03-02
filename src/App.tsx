@@ -139,7 +139,7 @@ function App() {
           {/* couple-gif */}
           <div className="flex flex-col items-center gap-6">
             <p className="text-center text-lg font-semibold text-gray-800">
-              When ever you feel like your stuck, sad, or confuse
+              When ever you feel like you're stuck, sad, or confuse
               <br /> just remember that I'm always here for you, and I will always love you no matter what happens! ❤️
             </p>
             <img
