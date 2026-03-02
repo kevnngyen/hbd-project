@@ -109,6 +109,9 @@ function App() {
             <div
               onClick={() => {
                 setIsSurpriseVisible(true);
+                setTimeout(() => {
+                  window.scrollBy({ top: 400, behavior: 'smooth' });
+                }, 300);
               }}
               className="cursor-pointer bg-blue-500 px-4 py-4 rounded-md hover:bg-blue-600 transition-colors"
             >
@@ -130,7 +133,8 @@ function App() {
           {/* couple-gif */}
           <div className="flex flex-col items-center gap-6">
             <p className="text-center text-lg font-semibold text-gray-800">
-              When you're down, or sad, I'm here for you ❤️
+              When ever you feel like your stuck, sad, or confuse
+              <br /> just remember that I'm always here for you, and I will always love you no matter what happens! ❤️
             </p>
             <img
               src={`${GIF_BASE}/${coupleGifs[0].file}`}
@@ -165,6 +169,10 @@ function App() {
               if (clickCount < 7) {
                 setClickCount(clickCount + 1);
                 setButtonScale(buttonScale + 0.2);
+              } else if (clickCount >= 6) {
+                setClickCount(clickCount + 1);
+                // Scroll down smoothly
+                window.scrollBy({ top: 400, behavior: 'smooth' });
               }
             }}
             style={{
@@ -173,7 +181,7 @@ function App() {
             }}
             className="cursor-pointer bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-full shadow-lg"
           >
-            {clickCount >= 7 ? "Yes! I love you too! 💕" : "Yes! 💖"}
+            {clickCount > 7 ? "Yes! I love you too! 💕" : "Yes! 💖"}
           </div>
         </div>
       </div>
