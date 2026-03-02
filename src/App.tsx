@@ -16,6 +16,12 @@ const coupleGifs = [
   { file: "sleep.gif",             alt: "Sleeping together" },
   { file: "eats.gif",              alt: "Eating together" },
   { file: "wallkiss.gif",          alt: "Wall kiss" },
+  { file: "dance.gif",            alt: "dancing" },
+  { file: "sleep2.gif",           alt: "sleeping2" },
+  { file: "sleep3.gif",            alt: "sleeping3" },
+  { file: "drive.gif",            alt: "driving" },
+  { file : "tote.gif",           alt: "tote" },
+  { file: "hold.gif",            alt: "hold" },
   { file: "selfie.gif",            alt: "Taking a selfie" },
 ];
 
